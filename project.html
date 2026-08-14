@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Memory · Chetna Grover</title>
+<meta name="description" content="A project revisited, told as an edition of the paper." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="prophet.css?v=139" />
+</head>
+<body class="memory-page">
+<main class="sheet">
+    <div class="siderail left" aria-hidden="true"><span>✦ Chetna Grover · Product Designer ✦ Chetna Grover · Product Designer ✦ Chetna Grover · Product Designer ✦</span></div>
+    <div class="siderail right" aria-hidden="true"><span>✦ Building digital products, mostly at startups ✦ Building digital products, mostly at startups ✦</span></div>
+
+    <header class="masthead">
+    <div class="mast-micro">
+      <span class="mm-left"><a class="mast-return" href="index.html" data-return aria-label="Return to previous page"><span class="rt-word">Return</span><span class="rt-dest" aria-hidden="true"></span></a><span class="mm-ed">2026 &middot; Portfolio Edition</span></span>
+      <span class="mm-right">
+        <a href="https://www.linkedin.com/in/chetnagrover/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.behance.net/chetnagrover" target="_blank" rel="noopener">Behance</a>
+        <a href="https://chetnagrover00.medium.com/" target="_blank" rel="noopener">Medium</a>
+      </span>
+    </div>
+    <div class="nameplate">
+      <a href="index.html" class="crest-link" aria-label="Chetna Grover, home"><span class="obj crest" style="width:clamp(64px,11.5vw,140px);height:auto" aria-hidden="true">
+        <svg viewBox="0 0 130 130" class="cgseal">
+          <defs>
+            <path id="cgTop" d="M23,65 A42,42 0 0 1 107,65"/>
+            <path id="cgBot" d="M25,65 A40,40 0 0 0 105,65"/>
+          </defs>
+          <circle class="ring" cx="65" cy="65" r="61"/>
+          <circle class="ring thin" cx="65" cy="65" r="56.5"/>
+          <circle class="beads" cx="65" cy="65" r="47"/>
+          <text class="arc"><textPath href="#cgTop" startOffset="50%">CHETNA GROVER</textPath></text>
+          <text class="arc"><textPath href="#cgBot" startOffset="50%">EST. 2019</textPath></text>
+          <text class="star" x="10" y="65">✦</text>
+          <text class="star" x="120" y="65">✦</text>
+          <text class="mono" x="65" y="80">C<tspan class="g">G</tspan></text>
+        </svg>
+      </span></a>
+      <h1><a class="mast-home" href="index.html">Chetna <span class="gild">G</span>rover</a></h1>
+    </div>
+    <div class="dateline">
+      <div class="cell"><b>5+ Years</b><span class="sub">in Design</span></div>
+      <div class="cell mid"><b>15+ Projects</b><span class="sub">shipped</span></div>
+      <div class="cell"><b>60%</b><span class="sub">repeat collaborations</span></div>
+      <div class="cell r"><b>6+ Teams</b><span class="sub">worked with</span></div>
+    </div>
+  </header>
+
+  <!-- ================= THE MEMORY (reusable template) ================= -->
+  <section class="pagehead">
+    <span class="kicker" id="mKicker">Case Study</span>
+    <h2 class="exhead" style="justify-items:center">
+      <span class="l poster lg" id="mName">A Memory</span>
+    </h2>
+    <p class="deck" id="mHead">A project, revisited.</p>
+  </section>
+
+  <hr class="rule thick" />
+
+  <article class="memory">
+    <div class="memory-photo" id="mHero" role="img" aria-label="Project cover"></div>
+    <p class="memory-lead" id="mDesc"></p>
+    <div class="memory-body" id="mBody"></div>
+    <div class="cs-sections" id="mSections"></div>
+    <dl class="memory-meta" id="mMeta"></dl>
+    <div class="memory-cta" id="mCta"></div>
+  </article>
+
+    <nav class="indexbar" aria-label="More about me" style="margin-top:clamp(16px,2.4vw,28px)">
+    <a href="projects.html">Work</a><span class="sep">✦</span>
+    <a href="experience.html">Experience</a><span class="sep">✦</span>
+    <a href="skills.html">Skills</a><span class="sep">✦</span>
+    <a href="community.html">Community</a><span class="sep">✦</span>
+    <a href="contact.html">Connect</a>
+  </nav>
+
+  <div class="colophon"><span class="star">✦</span> Designed &amp; built using Claude by Chetna Grover <span class="star">✦</span></div>
+</main>
+
+<script>
+/* The memories. To add a project later, only this data changes — the template stays identical. */
+(function () {
+  var PROJECTS = {
+    luma: {
+      name: "Luma", kicker: "Product Design", year: "2024", img: "luma-cover.png",
+      link: "https://www.behance.net/gallery/231190339/LUMA-Mindfulness-Manifestation-Companion-(App)",
+      head: "A solo ritual app for brighter days.",
+      desc: "A private, playful ritual app for mental health. No AI, no follower pressure, just tiny daily habits you keep with yourself.",
+      body: [
+        "Luma is a solo ritual app for brighter days: no AI, no follower pressure, just small, playful habits you keep with yourself."
+      ],
+      challenge: "I built Luma because mental health matters to me, and most apps in the space feel noisy or social-first. I wanted a private, kind, game-like space where tiny daily actions quietly add up — no feeds, no comments, and no AI pretending to be a therapist.",
+      approach: [
+        "Made it solo-first: your headspace matters more than social proof, so the rituals finish in seconds and the stakes stay kind — motivating without shame, never punishing a miss.",
+        "Built the 11:11 Mindful Nudge at its centre — swipe to manifest, see today's affirmation and streak, and repeat one goal for three weeks to wire the habit.",
+        "Surrounded it with Manifest (write a goal in the present tense), Affirm (a pick-a-card ritual with friendly animal mascots), and a Vision Feed that keeps your board and inspirations in one calm place.",
+        "Kept accessibility a default, not an afterthought: readable type, AA contrast and reduced motion."
+      ],
+      meta: { Role: "Product Designer", Year: "2024", Type: "Mobile app" }
+    },
+    fifo: {
+      name: "Fifo", kicker: "Product Design", year: "2023", img: "fifo-cover.png",
+      link: "https://www.behance.net/gallery/215688379/FIFO-A-Knowledge-Network-Web-App",
+      head: "Making knowledge easier to share.",
+      desc: "A knowledge network that gives innovators access to best practices, expert insights and useful resources.",
+      body: [
+        "Fifo is a content platform built to support innovators — one place to reach best practices, expert insights and the resources they actually need."
+      ],
+      challenge: "Innovators had no single, trusted home for best practices and expert knowledge — it was scattered and hard to act on.",
+      approach: [
+        "Traced the product's evolution through many design iterations toward the final interface, keeping the reasoning behind each decision visible instead of hidden.",
+        "Designed for a seamless, intuitive journey, so clients and viewers can see exactly why each choice was made."
+      ],
+      impactNote: "A clear design story end to end — the UX strategy stays visible on every screen, not buried.",
+      meta: { Role: "Product Designer", Year: "2023", Type: "Web platform" }
+    },
+    vajiram: {
+      name: "Vajiram &amp; Ravi", kicker: "UI/UX Redesign", year: "2022", img: "vajiram-cover.jpg",
+      link: "https://www.behance.net/gallery/173819213/Vajiram-and-Ravi-Redesigned",
+      head: "Rethinking a learning platform.",
+      desc: "A full website redesign that untangled complex navigation and lifted engagement and conversion.",
+      body: [
+        "Vajiram &amp; Ravi is a name aspirants trust — but over the years the website had grown into something dense and hard to move through, an interface that no longer matched what students actually needed."
+      ],
+      /* ---- Richer case-study fields (all optional — add any of these to a project
+         to expand it into a fuller story):
+           challenge:  string   · the problem / context
+           approach:   string[] · what you did, one point per line
+           impactNote: string   · the outcome in words
+           impact:     [{ num, label, note }] · hard-metric cards (use real figures)
+         Vajiram below is the worked example; copy the shape into other projects. ---- */
+      challenge: "Years of additions had left the site with dense navigation and an interface that got in the way of high-stakes decisions. Aspirants trusted the brand, but the experience no longer earned that trust.",
+      approach: [
+        "Led a full redesign, untangling the information architecture and modernising the UI around what students are actually trying to do.",
+        "Grounded decisions in real audience insight — designing for Gen Z, Millennials and rural users so one platform could speak clearly to very different people.",
+        "Extended the system into performance-driven marketing and product visuals, keeping order and warmth across a high-stakes learning experience."
+      ],
+      impactNote: "The redesign brought measurable gains in engagement and conversion — a cleaner journey, a modern interface, and visuals tuned to a genuinely diverse audience.",
+      /* Example of hard-metric cards — swap in your real numbers to use these instead of / alongside impactNote:
+         impact: [ { num: "+18%", label: "Conversion", note: "post-redesign" }, { num: "+2.4×", label: "Time on site" } ], */
+      meta: { Role: "Freelance UI/UX Designer", Year: "2022", Type: "Website redesign" }
+    },
+    myntra: {
+      name: "Myntra UX Analysis", kicker: "UX Case Study", year: "2022", img: "myntra-cover.png",
+      link: "https://www.behance.net/gallery/158542707/UX-Analysis-Of-Myntra",
+      head: "Looking beyond beautiful interfaces.",
+      desc: "A case study reading Myntra through the Laws of UX, to see how well it serves the people who use it.",
+      body: [
+        "An in-depth look at Myntra's UX — its design, its functionality, and the small interactions that shape how it feels to use."
+      ],
+      challenge: "How well does a product millions actually use hold up when you read it closely — from the user's perspective, not the interface's?",
+      approach: [
+        "Read the product through the Laws of UX — from Fitts's and Hick's Law to the Zeigarnik and Von Restorff effects — always asking how well Myntra meets real needs, expectations and preferences.",
+        "Examined design, functionality and the small interactions that shape the feel, keeping the analysis practical rather than academic."
+      ],
+      impactNote: "Clear, usable insights about the design — and a demonstration of how the Laws of UX hold up when applied to a product at real scale.",
+      meta: { Role: "UX Analyst", Year: "2022", Type: "UX case study" }
+    },
+    jar: {
+      name: "Jar", kicker: "Design &amp; Marketing", year: "2022", img: "jar-cover.jpg",
+      link: "https://www.behance.net/gallery/188727499/Graphic-Ads-JAR",
+      head: "Designing for growth at scale.",
+      desc: "Visuals for digital ads, print and email inside a fast-growing fintech, including celebrity and IPL campaigns.",
+      body: [
+        "At Jar, a fast-growing fintech, design moved fast and reached millions — I designed across everything visual: digital ads, print and email campaigns."
+      ],
+      challenge: "Design at Jar moved fast and reached millions — the work had to turn quick ideas into clear, confident visuals without losing consistency at scale.",
+      approach: [
+        "Designed across the full visual surface — digital ads, print and email campaigns.",
+        "Delivered high-visibility campaigns, including celebrity and IPL-related promotions.",
+        "Partnered closely with the marketing and product teams to move from quick idea to finished visual."
+      ],
+      impactNote: "The big leagues — work that reached millions and changed how I think about design at scale.",
+      meta: { Role: "Graphic Designer", Year: "2022", Type: "Product marketing" }
+    },
+    riyaasat: {
+      name: "Riyaasat Campaign", kicker: "Campaign Design", year: "2021", img: "riyaasat-cover.png",
+      link: "https://www.behance.net/gallery/210649295/Riyaasat-Print-Media-Designs",
+      head: "Where storytelling met visual design.",
+      desc: "Sale campaign creatives for a brand built on royalty, tradition and elegance, across digital and print.",
+      body: [
+        "Riyaasat stands for royalty, tradition and elegance — so the whole design direction started there. Every sale creative, digital and print, was built around that brand essence."
+      ],
+      challenge: "A brand built on royalty, tradition and elegance needed sale creatives that felt luxurious and cohesive across digital and print — while still driving attention to the offer.",
+      approach: [
+        "Kept the materials cohesive and professional, from posters to banners, while giving each one enough character to stand out.",
+        "Made the layouts strategic rather than decorative — guiding attention to the key message with clean, uncluttered impact.",
+        "Worked in Figma for structure and Photoshop for polish, letting the visual style carry the brand's story: timeless, luxurious and still approachable."
+      ],
+      impactNote: "Every piece was made to look beautiful and work hard — helping the brand connect, inform and sell.",
+      meta: { Role: "Visual Designer", Year: "2021", Type: "Campaign creatives" }
+    }
+  };
+
+  function param() {
+    var m = /[?&]p=([^&]+)/.exec(location.search);
+    return m ? decodeURIComponent(m[1]).toLowerCase() : "luma";
+  }
+  var p = PROJECTS[param()] || PROJECTS.luma;
+
+  document.title = (p.name.replace(/&amp;/g, "&")) + " · Chetna Grover";
+  document.getElementById("mKicker").innerHTML = p.kicker;
+  document.getElementById("mName").innerHTML = p.name;
+  document.getElementById("mHead").innerHTML = p.head;
+  document.getElementById("mDesc").innerHTML = p.desc;
+
+  var hero = document.getElementById("mHero");
+  if (p.img) {                                          // the project cover
+    var im = new Image();
+    im.alt = p.name.replace(/&amp;/g, "&") + " cover"; im.src = p.img;   // hero cover loads eagerly (above the fold)
+    hero.appendChild(im);
+  } else {                                              // fall back to the printed placeholder
+    hero.classList.add("halftone");
+    hero.innerHTML = "<span>" + p.name + "</span>";
+  }
+
+  var body = document.getElementById("mBody");
+  p.body.forEach(function (para) {
+    var el = document.createElement("p");
+    el.innerHTML = para;
+    body.appendChild(el);
+  });
+
+  /* ---- optional case-study sections: render only when the project supplies them,
+     so lighter projects stay clean and richer ones tell the full story ---- */
+  var sections = document.getElementById("mSections");
+  function csHead(txt) { var h = document.createElement("h3"); h.className = "cs-head"; h.textContent = txt; return h; }
+  if (p.challenge) {
+    var cb = document.createElement("section"); cb.className = "cs-block";
+    cb.appendChild(csHead("The challenge"));
+    var ct = document.createElement("p"); ct.className = "cs-text"; ct.innerHTML = p.challenge; cb.appendChild(ct);
+    sections.appendChild(cb);
+  }
+  if (p.approach && p.approach.length) {
+    var ab = document.createElement("section"); ab.className = "cs-block";
+    ab.appendChild(csHead("How I approached it"));
+    var ul = document.createElement("ul"); ul.className = "cs-list";
+    p.approach.forEach(function (x) { var li = document.createElement("li"); li.innerHTML = x; ul.appendChild(li); });
+    ab.appendChild(ul); sections.appendChild(ab);
+  }
+  if ((p.impact && p.impact.length) || p.impactNote) {
+    var ib = document.createElement("section"); ib.className = "cs-block cs-impact";
+    ib.appendChild(csHead("The outcome"));
+    if (p.impact && p.impact.length) {
+      var grid = document.createElement("div"); grid.className = "cs-stats";
+      p.impact.forEach(function (it) {
+        var c = document.createElement("div"); c.className = "cs-stat";
+        c.innerHTML = '<span class="cs-num">' + it.num + '</span><span class="cs-lbl">' + it.label + '</span>' + (it.note ? '<span class="cs-note">' + it.note + '</span>' : '');
+        grid.appendChild(c);
+      });
+      ib.appendChild(grid);
+    }
+    if (p.impactNote) { var nt = document.createElement("p"); nt.className = "cs-text"; nt.innerHTML = p.impactNote; ib.appendChild(nt); }
+    sections.appendChild(ib);
+  }
+
+  var meta = document.getElementById("mMeta");
+  Object.keys(p.meta).forEach(function (k) {
+    var wrap = document.createElement("div");
+    var dt = document.createElement("dt"); dt.textContent = k;
+    var dd = document.createElement("dd"); dd.innerHTML = p.meta[k];
+    wrap.appendChild(dt); wrap.appendChild(dd); meta.appendChild(wrap);
+  });
+
+  if (p.link) {                                         // a link out to the full project, once one is provided
+    var a = document.createElement("a");
+    a.className = "project-link"; a.href = p.link;
+    a.target = "_blank"; a.rel = "noopener";
+    a.innerHTML = 'View the full project <span class="arr" aria-hidden="true">&rarr;</span>';
+    document.getElementById("mCta").appendChild(a);
+  }
+})();
+</script>
+<script src="prophet.js?v=99" defer></script>
+</body>
+</html>
