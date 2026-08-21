@@ -1,4 +1,4 @@
-/* The Daily Prophet — enhancements. The site works fully without this file. */
+/* The Daily Prophet - enhancements. The site works fully without this file. */
 (function () {
   "use strict";
   var root = document.documentElement;
@@ -13,7 +13,7 @@
   }
 
   /* ==================================================================
-     Ambient newspaper sound — every sound synthesised (no audio files),
+     Ambient newspaper sound - every sound synthesised (no audio files),
      kept extremely faint, ON by default but unlocked only by the first
      user gesture (browser autoplay policy), and routed through one low
      master gain so nothing ever shouts. One engine, one mute.
@@ -22,7 +22,7 @@
     var AC = window.AudioContext || window.webkitAudioContext;
     var ac = null, master = null, on = true;    // cinematic sound: ON by default (a saved "off" still wins below)
     try { var pref = localStorage.getItem("paperSound"); if (pref !== null) on = (pref === "on"); } catch (e) {}
-    var active = [];                             // the voices currently sounding — only one cue plays at a time
+    var active = [];                             // the voices currently sounding - only one cue plays at a time
 
     function ensure() {
       if (!AC) return null;
@@ -53,7 +53,7 @@
       for (var i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
       var s = ac.createBufferSource(); s.buffer = b; return s;
     }
-    /* filtered-noise gesture — paper, parchment, cloth, wood, wax textures */
+    /* filtered-noise gesture - paper, parchment, cloth, wood, wax textures */
     function grain(o) {
       if (!on || !ensure()) return;
       if (o.solo !== false) hush();
@@ -67,7 +67,7 @@
       s.connect(f); f.connect(g);
       s.start(t); s.stop(t + o.dur + 0.02);
     }
-    /* pure partial — brass, glass, bells, gentle magical air */
+    /* pure partial - brass, glass, bells, gentle magical air */
     function tone(freq, dur, gain, type, solo, f1) {
       if (!on || !ensure()) return;
       if (solo !== false) hush();
@@ -82,10 +82,10 @@
     function chord(fs, dur, gain, type) { if (!on || !ensure()) return; hush();
       for (var i = 0; i < fs.length; i++) tone(fs[i], dur * (1 - i * 0.07), gain * (1 - i * 0.26), type || "sine", false); }
 
-    /* the organic sound bank — low volume, 150–500ms, one clear cue each */
+    /* the organic sound bank - low volume, 150–500ms, one clear cue each */
     var S = {
       /* paper family */
-      open:    function () { grain({ dur: .5, freq: 850, q: .3, gain: .009, to: 1500, type: "bandpass" }); },  // newspaper unfolding on load — almost inaudible
+      open:    function () { grain({ dur: .5, freq: 850, q: .3, gain: .009, to: 1500, type: "bandpass" }); },  // newspaper unfolding on load - almost inaudible
       rustle:  function (v){ grain({ dur: rnd(.16,.26), freq: rnd(2200,3000), q: .5, gain: (v || 1) * .010 }); }, // hover
       page:    function () { grain({ dur: .4, freq: 1200, q: .4, gain: .022, to: 2800, atk: .1 }); },           // nav click / page flip
       land:    function () { grain({ dur: .09, freq: 780, q: .8, gain: .04, type: "lowpass", atk: .005 }); },   // paper landing
@@ -96,22 +96,22 @@
       scraps:  function () { grain({ dur: rnd(.12,.2), freq: rnd(2600,3400), q: .5, gain: .006, type: "highpass" }); }, // torn scraps
       quill:   function () { grain({ dur: rnd(.09,.15), freq: 3600, q: .9, gain: .006, type: "highpass" }); },  // fountain pen
       /* materials */
-      wax:     function () { grain({ dur: .13, freq: 300, q: .8, gain: .044, type: "lowpass", atk: .006 }); },  // wax seal press — deep but soft
-      brass:   function () { chord([466.16, 699.2, 932.3], .42, .019, "triangle"); },                           // AI cup — one clean metallic note
+      wax:     function () { grain({ dur: .13, freq: 300, q: .8, gain: .044, type: "lowpass", atk: .006 }); },  // wax seal press - deep but soft
+      brass:   function () { chord([466.16, 699.2, 932.3], .42, .019, "triangle"); },                           // AI cup - one clean metallic note
       switch_: function () { grain({ dur: .06, freq: 620, q: 1.2, gain: .05, type: "lowpass", atk: .003 });
                              grain({ dur: .03, freq: 2200, q: .8, gain: .02, type: "highpass", solo: false, atk: .002 }); }, // gramophone switch
       footstep:function () { grain({ dur: .1, freq: 210, q: .7, gain: .028, type: "lowpass", atk: .006 }); },   // soft leather on old wood
       fabric:  function () { grain({ dur: rnd(.18,.26), freq: rnd(1600,2200), q: .4, gain: .011, to: 900 }); }, // soft cloth movement
-      /* water — the Pensieve */
+      /* water - the Pensieve */
       ripple:  function () { tone(660, .34, .02, "sine", true, 190);
                              grain({ dur: .3, freq: 900, q: .5, gain: .01, type: "lowpass", solo: false }); },  // satisfying drop
       unripple:function () { tone(190, .32, .014, "sine", true, 640); },                                        // reverse ripple
       swirl:   function () { grain({ dur: .48, freq: 700, q: .3, gain: .011, to: 1800 });
                              tone(880, .4, .006, "sine", false); },                                             // liquid / magical swirl
-      /* magical — kept gentle, never theatrical */
+      /* magical - kept gentle, never theatrical */
       shimmer: function () { chord([1320, 1980, 2640], .45, .009, "sine"); },                                   // Pensieve memory opens
       chime:   function () { chord([784, 1176, 1568], .5, .015, "triangle"); },
-      bell:    function () { chord([880, 1320, 1760], .55, .014, "sine"); },                                 // reward — final hat / final scroll
+      bell:    function () { chord([880, 1320, 1760], .55, .014, "sine"); },                                 // reward - final hat / final scroll
       sparkle: function () { tone(2637, .18, .009, "sine"); },                                                  // one tiny magical spark
       letters: function () { grain({ dur: .5, freq: 1500, q: .3, gain: .009, to: 2400 }); },                     // floating paper letters, gentle air
       wandOn:  function () { tone(720, .28, .016, "sine", true, 1440);
@@ -219,7 +219,7 @@
   sbtn.addEventListener("click", function () { Paper.toggle(); paintSound(); });
 
   if (!reduce) {
-    /* page hover — an occasional, randomised faint rustle, like a hand
+    /* page hover - an occasional, randomised faint rustle, like a hand
        brushing across old paper (not on every move) */
     var lastHover = 0, hoverGap = 9000;
     window.addEventListener("pointermove", function () {
@@ -228,13 +228,13 @@
       if (Math.random() < 0.5) { lastHover = t; hoverGap = 7000 + Math.random() * 9000; Paper.play("rustle", 0.8); }
     }, { passive: true });
 
-    /* the photograph — almost nothing: the faintest shift, rarely */
+    /* the photograph - almost nothing: the faintest shift, rarely */
     var fp = document.querySelector(".fp-portrait"), lastFp = 0;
     if (fp) fp.addEventListener("pointerenter", function () {
       var t = Date.now(); if (t - lastFp < 12000) return; lastFp = t; Paper.play("shift");
     });
 
-    /* idle ambience — one rare, random paper sound every 40–60s */
+    /* idle ambience - one rare, random paper sound every 40–60s */
     (function idle() {
       setTimeout(function () {
         if (!document.hidden) {
@@ -263,7 +263,7 @@
   moveLight();
 
   /* ---- editorial page-turn: the newspaper FOLDS (never slides). The leaf
-     pivots on its left spine like real paper — covering when you leave a
+     pivots on its left spine like real paper - covering when you leave a
      page, peeling up to reveal & settle when you arrive at the next. ---- */
   var FOLD_COVER = "perspective(1800px) rotateY(0deg)";        // flat, over the page
   var FOLD_AWAY  = "perspective(1800px) rotateY(-104deg)";     // stood on the spine, out of view
@@ -297,12 +297,12 @@
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // let new-tab work
       e.preventDefault();
 
-      a.classList.add("turn-press");                          // step 1 — press (~120ms)
-      setTimeout(function () {                                 // step 2 — grow into focus, page fades
+      a.classList.add("turn-press");                          // step 1 - press (~120ms)
+      setTimeout(function () {                                 // step 2 - grow into focus, page fades
         document.body.classList.add("turning");
         a.classList.add("turn-grow");
       }, 120);
-      setTimeout(function () {                                 // step 3 — the newspaper folds over
+      setTimeout(function () {                                 // step 3 - the newspaper folds over
         Paper.play("page");
         pt.classList.add("down");
         pt.style.transition = "none";
@@ -314,7 +314,7 @@
           });
         });
       }, 270);
-      setTimeout(function () {                                // step 4 — under cover
+      setTimeout(function () {                                // step 4 - under cover
         if (a.hasAttribute("data-return")) goReturn();        // RETURN uses history, not a fixed href
         else window.location.href = href;
       }, 950);
@@ -345,7 +345,7 @@
   }
 
   /* ================================================================
-     ANONYMOUS TIP — after a quiet minute of reading, an owl slips in
+     ANONYMOUS TIP - after a quiet minute of reading, an owl slips in
      and drops a sealed note that reveals how the newspaper is read.
      ================================================================ */
   (function () {
@@ -372,7 +372,7 @@
 
     /* ---- the note (envelope + the letter that unfolds inside it) ---- */
     var note = make("div", { "class": "anon-note", "role": "button", "tabindex": "0",
-                             "aria-label": "Anonymous tip — open a sealed note", "aria-expanded": "false" });
+                             "aria-label": "Anonymous tip: open a sealed note", "aria-expanded": "false" });
     note.innerHTML =
       '<div class="anon-env">' +
         '<div class="anon-letter">' +
@@ -499,11 +499,11 @@
   });
 
   /* ================================================================
-     TYPOGRAPHY MORPH — a hidden interaction, not autoplay. The line
+     TYPOGRAPHY MORPH - a hidden interaction, not autoplay. The line
      shows only "Hands-on learning × shared experiences". Hover (desktop)
      or tap (mobile) and, after a short beat, the letters lift off, float
-     and cross, then reassemble into the hidden message — "meaningful /
-     connections" — hold 2s, and fly home. Replayable. Honours reduced-
+     and cross, then reassemble into the hidden message - "meaningful /
+     connections" - hold 2s, and fly home. Replayable. Honours reduced-
      motion and the shared sound mute. (Not a literal anagram: a few
      letters ink in / dissolve, masked by the motion.)
      ================================================================ */
@@ -537,7 +537,7 @@
     function sound(name, v) { try { Paper.play(name, v); } catch (e) {} }
 
     /* trigger: hover (desktop) / tap (mobile), with a beat so a passing
-       cursor doesn't trip it. Replayable — never while one run is live. */
+       cursor doesn't trip it. Replayable - never while one run is live. */
     var running = false, timer = null;
     function tryStart() { if (running || timer) return; timer = setTimeout(function () { timer = null; run(); }, 360); }
     function cancelStart() { if (timer) { clearTimeout(timer); timer = null; } }
@@ -669,7 +669,7 @@
   })();
 
   /* ================================================================
-     CONTACT LETTER — the contact form is a letter you fold and send.
+     CONTACT LETTER - the contact form is a letter you fold and send.
      On "Fold & Send": the letter lifts out, folds itself, drops back
      into the envelope, the flap closes, a wax seal is stamped, an owl
      carries it off, and an open reply note is left behind. Honours
@@ -706,7 +706,7 @@
       var h = Math.round(scene.getBoundingClientRect().height);
       scene.style.height = h + "px";                        // lock the height so the collapse can transition
       scene.classList.add("sealing");                       // the letter folds and sinks in (one motion)
-      sound("fold");                                        // paper folding — starts on contact with the motion
+      sound("fold");                                        // paper folding - starts on contact with the motion
       setTimeout(function () { scene.classList.add("flapshut"); }, 760);                  // the flap closes over it
       setTimeout(function () { scene.style.height = "300px"; }, 980);                     // the stage settles down with it
       setTimeout(function () { scene.classList.add("waxed"); sound("wax"); }, 1480);      // one soft wax press
@@ -729,7 +729,7 @@
     var lastQuill = 0;
     [nameF, emailF, msgF].forEach(function (i) { if (i) i.addEventListener("input", function () {
       if (fieldOf(i).classList.contains("invalid")) clearErr(i);
-      var now = Date.now(); if (now - lastQuill > 110) { lastQuill = now; sound("quill"); }   // fountain pen, not a keyboard — throttled and faint
+      var now = Date.now(); if (now - lastQuill > 110) { lastQuill = now; sound("quill"); }   // fountain pen, not a keyboard - throttled and faint
     }); });
 
     form.addEventListener("submit", function (e) {
@@ -740,11 +740,11 @@
       var name = nameF, email = emailF, msg = msgF;
       sent = true;
       var btn = form.querySelector(".l-send"); if (btn) btn.setAttribute("disabled", "disabled");
-      // open the visitor's mail app with the letter pre-filled — no backend, nothing silently lost
+      // open the visitor's mail app with the letter pre-filled - no backend, nothing silently lost
       var to = form.getAttribute("data-mailto") || "chetnagrover00@gmail.com";
       var who = name ? name.value.trim() : "", from = email ? email.value.trim() : "";
-      var subject = "Hello from your portfolio" + (who ? " — " + who : "");
-      var body = (msg ? msg.value.trim() : "") + "\n\n— " + who + (from ? " (" + from + ")" : "");
+      var subject = "Hello from your portfolio" + (who ? ", " + who : "");
+      var body = (msg ? msg.value.trim() : "") + "\n\n- " + who + (from ? " (" + from + ")" : "");
       var mailto = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
       try { window.location.href = mailto; } catch (e) {}
       if (reduce) { finish(); } else { run(); }
@@ -752,7 +752,7 @@
   })();
 
   /* ================================================================
-     THE PATH I WALKED — a wandering trail of ink footprints stamps in
+     THE PATH I WALKED - a wandering trail of ink footprints stamps in
      as you scroll, one step at a time (footstep, pause, footstep), and
      the clipping it reaches gives a soft thump and lifts a few pixels.
      Honours reduced-motion and the shared sound mute.
@@ -761,7 +761,7 @@
     var path = document.getElementById("path");
     if (!path) return;
     function sound(n, v) { try { Paper.play(n, v); } catch (e) {} }
-    /* touch devices have no hover to replay the trail — there, the footprints
+    /* touch devices have no hover to replay the trail - there, the footprints
        are revealed by scrolling and kept, so the journey builds up under the thumb */
     var noHover = !!(window.matchMedia && window.matchMedia("(hover: none)").matches);
 
@@ -776,7 +776,7 @@
       return 50;
     }
 
-    /* weave each trail from the previous stop across to the next — a real path, not a straight line */
+    /* weave each trail from the previous stop across to the next - a real path, not a straight line */
     [].forEach.call(path.querySelectorAll(".trail"), function (trail) {
       var fromX = sideX(trail.previousElementSibling);
       var toX = sideX(trail.nextElementSibling);
@@ -807,14 +807,14 @@
       clip.insertBefore(no, clip.firstChild);
     });
 
-    /* the very last footprint is pressed a little deeper — the journey rests here */
+    /* the very last footprint is pressed a little deeper - the journey rests here */
     var lastTrail = path.querySelector(".trail.last");
     if (lastTrail) {
       var lastFeet = lastTrail.querySelectorAll(".fp");
       if (lastFeet.length) lastFeet[lastFeet.length - 1].classList.add("dark");
     }
 
-    if (reduce || !("IntersectionObserver" in window)) {         // no walk — just show the trail
+    if (reduce || !("IntersectionObserver" in window)) {         // no walk - just show the trail
       [].forEach.call(path.querySelectorAll(".fp"), function (f) { f.classList.add("on"); });
       return;
     }
@@ -855,7 +855,7 @@
     [].forEach.call(path.querySelectorAll(".trail"), function (t) { io.observe(t); });
 
     /* scroll-driven reveal: the same walk, but never dependent on IntersectionObserver firing.
-       On touch this IS the interaction — the journey unrolls under your thumb as you scroll. */
+       On touch this IS the interaction - the journey unrolls under your thumb as you scroll. */
     function revealVisible() {
       [].forEach.call(path.querySelectorAll(".trail"), function (t) {
         if (t.dataset.walked === "1") return;
@@ -867,7 +867,7 @@
     window.addEventListener("resize", revealVisible);
     revealVisible();
 
-    /* hovering anywhere along the journey keeps those footsteps walking — again and again */
+    /* hovering anywhere along the journey keeps those footsteps walking - again and again */
     function startHover(trail) { if (!trail) return; trail.dataset.hovered = "1"; walk(trail, true); }
     function stopHover(trail) { if (!trail) return; trail.dataset.hovered = ""; }
 
@@ -903,7 +903,7 @@
     if (!room) return;
     var basin = document.getElementById("basin");
     if (!basin) return;
-    /* phone: no basin drag — the clippings stay plain links you tap to open */
+    /* phone: no basin drag - the clippings stay plain links you tap to open */
     if (window.matchMedia && window.matchMedia("(max-width: 760px)").matches) return;
     var liquid = basin.querySelector(".basin-liquid");
     function sound(n, v) { try { Paper.play(n, v); } catch (e) {} }
@@ -928,13 +928,13 @@
       var b = basinCenter(), m = memo.getBoundingClientRect();
       var dx = b.x - (m.left + m.width / 2), dy = b.y - (m.top + m.height / 2);
       basin.classList.add("reacting"); basin.style.setProperty("--react", "1");
-      ripple(); sound("ripple");                          // the memory touches the liquid — the satisfying drop
+      ripple(); sound("ripple");                          // the memory touches the liquid - the satisfying drop
       memo.classList.remove("lifting");
       memo.style.transition = "transform .8s cubic-bezier(.5,.15,.2,1), opacity .7s ease, filter .7s ease";
       memo.style.transform = "translate(" + dx + "px," + dy + "px) rotate(9deg) scale(.3)";  // tilt, touch, sink
       memo.style.opacity = "0";
       memo.style.filter = "blur(3px) grayscale(1)";     // the newspaper ink melts into the liquid
-      setTimeout(function () { ripple(); sound("swirl"); }, 240);   // the memory opens — a soft liquid swirl
+      setTimeout(function () { ripple(); sound("swirl"); }, 240);   // the memory opens - a soft liquid swirl
       setTimeout(function () { ripple(); }, 520);
       setTimeout(function () {                            // the ripple expands until the memory fills the view
         veil.style.setProperty("--vx", b.x + "px");
@@ -980,7 +980,7 @@
         memo.classList.remove("lifting");
         var over = proximity();
         if (over || !moved) { relive(memo, slug); }      // dropped in the basin, or a simple tap
-        else {                                           // carried away — settle back into place
+        else {                                           // carried away - settle back into place
           basin.classList.remove("reacting"); basin.style.setProperty("--react", "0");
           memo.classList.add("settling"); memo.style.transform = "";
           setTimeout(function () { memo.classList.remove("settling"); }, 560);
@@ -1147,7 +1147,7 @@
     var key, text, targets, anchor, before = false;
     if (document.querySelector(".hatfig")) { key = "skills"; text = "Click a hat to try it on"; targets = document.querySelectorAll(".hatfig .hat"); }
     else if (document.getElementById("path")) { key = "experience"; text = "The footprints appear as you scroll"; targets = null; }
-    else return;   // the community morph is left as a hidden surprise — no hint
+    else return;   // the community morph is left as a hidden surprise - no hint
     if (seen(key)) return;
     if (!anchor) anchor = document.querySelector(".pagehead .deck") || document.querySelector(".deck");
     if (!anchor || !anchor.parentNode) return;
@@ -1196,7 +1196,7 @@
       requestAnimationFrame(function () { requestAnimationFrame(function () { veil.classList.remove("fill"); }); });
     } else { veil.classList.remove("fill"); }
     setTimeout(function () { if (veil.parentNode) veil.parentNode.removeChild(veil); }, 1100);
-    sound("shimmer");                                    // the memory surfaces — a gentle Pensieve shimmer
+    sound("shimmer");                                    // the memory surfaces - a gentle Pensieve shimmer
 
     var back = document.querySelector(".return-archive");
     if (back) back.addEventListener("click", function (e) {           // the memory drains, then we surface in the archive
@@ -1205,7 +1205,7 @@
       v.style.setProperty("--vx", "50%"); v.style.setProperty("--vy", "50%");
       document.body.appendChild(v);
       void v.offsetWidth; v.classList.add("fill");
-      sound("unripple");                                 // the memory drains back — a reverse ripple
+      sound("unripple");                                 // the memory drains back - a reverse ripple
       setTimeout(function () { location.href = back.getAttribute("href"); }, 820);
     });
   })();
@@ -1249,7 +1249,7 @@
       worn.classList.remove("worn");
       worn = null;
       clip.classList.remove("show");
-      sound("fabric");                                  // the hat lifts away — soft cloth
+      sound("fabric");                                  // the hat lifts away - soft cloth
     }
 
     var portrait = document.querySelector(".portrait");
@@ -1278,7 +1278,7 @@
         worn = fig;
         fillClip(fig);
         clip.classList.add("show");
-        /* the lesson can sit below the fold on small phones — center it so it's never missed */
+        /* the lesson can sit below the fold on small phones - center it so it's never missed */
         try { clip.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" }); } catch (e) {}
         sound("fabric");
         return;
@@ -1292,7 +1292,7 @@
       worn = fig;
       fillClip(fig);
       setTimeout(function () { clip.classList.add("show"); }, 380);
-      sound("fabric");                                  // the hat settles on — soft fabric movement
+      sound("fabric");                                  // the hat settles on - soft fabric movement
     }
 
     figs.forEach(function (fig) {
@@ -1303,7 +1303,7 @@
   })();
 
   /* ================================================================
-     404 · DOBBY  ·  hover/tap the sock — it wiggles, a folded note
+     404 · DOBBY  ·  hover/tap the sock - it wiggles, a folded note
      unfurls, then folds itself away. Three clicks reveal a secret.
      ================================================================ */
   (function () {

@@ -1,51 +1,48 @@
 /* =====================================================================
-   THE DAILY PROPHET — Portfolio Edition · shared stylesheet
+   THE DAILY PROPHET - Portfolio Edition · shared stylesheet
    Chetna Grover · UI/UX Designer
    ---------------------------------------------------------------------
    Edit copy inside the HTML pages. Global look lives here.
    ===================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400;600;700&family=Pirata+One&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400;600;700&family=Pirata+One&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;500;600;700&display=swap');
 
 /* =====================================================================
-   DESIGN SYSTEM — tokens
+   DESIGN SYSTEM - tokens
    ---------------------------------------------------------------------
-   TYPE — three working voices, two reserved marks:
+   TYPE - three working voices, two reserved marks:
      --f-display  Anton .............. every large word (hero, headlines, nav)
      --f-serif    Old Standard TT .... body, taglines, drop-caps, emphasis
      --f-label    Oswald ............. small uppercase furniture (kickers, nav, buttons)
-     --f-wordmark Pirata One ......... the masthead NAME only — a brand lockup
-     --f-deva     Tiro Devanagari .... Hindi (script extension of the serif)
-   COLOR — 2 papers · 3 inks (one hierarchy) · 1 rule · 2 accents (gold, red).
-   The full reference lives in design-system.html.
+     --f-wordmark Pirata One ......... the masthead NAME only - a brand lockup
+   COLOR - 2 papers · 3 inks (one hierarchy) · 1 rule · 2 accents (gold, red).
+   The full reference lives in design-system.md.
    ===================================================================== */
 :root{
-  /* — Surfaces — */
+  /* - Surfaces - */
   --paper:      #ece4ce;   /* base newsprint            */
   --paper-lit:  #f5efdb;   /* lifted paper / insets     */
   --paper-edge: #d6caa6;   /* stained torn edge         */
 
-  /* — Ink : one text hierarchy (primary → tertiary) — */
-  --ink:        #1c1811;   /* primary — headlines, key text */
-  --ink-2:      #3a3225;   /* secondary — body copy         */
-  --ink-3:      #6b5d42;   /* tertiary — captions, meta     */
+  /* - Ink : one text hierarchy (primary → tertiary) - */
+  --ink:        #1c1811;   /* primary - headlines, key text */
+  --ink-2:      #3a3225;   /* secondary - body copy         */
+  --ink-3:      #6b5d42;   /* tertiary - captions, meta     */
 
-  /* — Line — */
+  /* - Line - */
   --rule:       #262016;   /* every hairline & border   */
 
-  /* — Accents : exactly two — */
+  /* - Accents : exactly two - */
   --gold:       #c0983a;   /* ornament: crest, stars, dividers, separators */
   --red:        #7c1f1a;   /* signal: the AI, wax seal, primary CTA */
 
   --measure: 1180px;       /* broadsheet width          */
-  --gut: clamp(16px, 2.4vw, 30px);
 
-  /* — Type — */
+  /* - Type - */
   --f-display:  "Anton", "Oswald", sans-serif;
   --f-serif:    "Old Standard TT", Georgia, "Times New Roman", serif;
   --f-label:    "Oswald", "Arial Narrow", sans-serif;
   --f-wordmark: "Pirata One", serif;
-  --f-deva:     "Tiro Devanagari Hindi", "Old Standard TT", serif;
 
   /* ---- legacy aliases: map every old token onto the system above, so the
      whole codebase inherits the 3-voice / 2-accent system in one place ---- */
@@ -53,15 +50,14 @@
   --ink-faint: var(--ink-3);
   --oxblood:   var(--ink);        /* the redundant 4th near-black folds into ink */
   --seal-red:  var(--red);
-  --paper-deep: var(--paper-edge);
   --f-mast:   var(--f-wordmark);
   --f-body:   var(--f-serif);
   --f-sc:     var(--f-label);
-  --f-disp:   var(--f-serif);     /* was Playfair — now the one serif */
+  --f-disp:   var(--f-serif);     /* was Playfair - now the one serif */
   --f-poster: var(--f-display);
-  --f-slab:   var(--f-display);   /* was Alfa Slab — now Anton */
-  --f-script: var(--f-serif);     /* Pinyon dropped — falls back to serif */
-  --f-hand:   "Caveat", cursive;  /* handwriting — reserved for the easter-egg note */
+  --f-slab:   var(--f-display);   /* was Alfa Slab - now Anton */
+  --f-script: var(--f-serif);     /* Pinyon dropped - falls back to serif */
+  --f-hand:   "Caveat", cursive;  /* handwriting - reserved for the easter-egg note */
 }
 
 *{box-sizing:border-box}
@@ -116,7 +112,7 @@ body{
   letter-spacing:.08em;font-size:.92em;color:var(--ink-soft);text-decoration:none;
   border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
 .mast-micro .mm-right a:hover,.mast-micro .mm-right a:focus-visible{color:var(--seal-red);border-color:var(--seal-red)}
-/* RETURN — a quiet "go back", matching the header links. Shown at every width on
+/* RETURN - a quiet "go back", matching the header links. Shown at every width on
    the pages that carry it; the home page has no return control and keeps its edition marker. */
 .mast-micro .mm-ed{display:none}
 .mast-return{display:inline-block;font-family:var(--f-sc);font-style:normal;text-transform:uppercase;
@@ -125,7 +121,7 @@ body{
 .mast-return .rt-word::before{content:"\2190";margin-right:.5em;   /* a quiet back arrow */
   font-family:Georgia,"Times New Roman",serif;letter-spacing:0}
 .mast-return:hover,.mast-return:focus-visible{color:var(--seal-red);border-color:var(--seal-red);transform:translateX(-3px)}
-.mast-return .rt-dest{display:none}   /* label stays "RETURN" — no text change on hover */
+.mast-return .rt-dest{display:none}   /* label stays "RETURN" - no text change on hover */
 .mast-return:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-bottom-color:transparent}
 
 .nameplate{
@@ -135,7 +131,7 @@ body{
 }
 .crest{width:clamp(64px,11.5vw,140px);height:auto;flex:none;color:var(--ink)}
 .crest .g{fill:var(--gold)}
-/* the press-seal medallion — sized to stand with the nameplate */
+/* the press-seal medallion - sized to stand with the nameplate */
 .cgseal .ring{fill:none;stroke:currentColor;stroke-width:1.6}
 .cgseal .ring.thin{stroke-width:.9}
 .cgseal .beads{fill:none;stroke:currentColor;stroke-width:2.6;stroke-dasharray:.4 5.4;stroke-linecap:round}
@@ -205,12 +201,12 @@ body{
 .photo .frame{position:relative;overflow:hidden;background:#100d08;
   border:1px solid #000;filter:grayscale(1) contrast(1.12) sepia(.32)}
 .photo .frame img,.photo .frame svg{display:block;width:100%;height:auto}
-/* real portrait photo — crop to a tidy portrait frame, kept on the face,
+/* real portrait photo - crop to a tidy portrait frame, kept on the face,
    and rendered in clean black & white (neutral, no sepia) */
 .fp-portrait .frame{aspect-ratio:3/4;filter:grayscale(1) contrast(1.14) brightness(1.02)}
 .fp-portrait .frame img{width:100%;height:100%;object-fit:cover;object-position:52% 20%}
 .photo.fp-portrait:hover .frame{filter:grayscale(1) contrast(1.2) brightness(1.04)}
-/* the "movement" — slow living sway on the portrait */
+/* the "movement" - slow living sway on the portrait */
 .photo .living{animation:sway 6.5s ease-in-out infinite;transform-origin:52% 55%}
 /* film grain + old-photo scanlines over the frame */
 .photo .frame::after{
@@ -234,7 +230,6 @@ body{
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}
   40%{transform:translate(3%,-2%)}60%{transform:translate(-2%,4%)}80%{transform:translate(4%,-3%)}
   100%{transform:translate(0,0)}}
-@keyframes blink{0%,96%,100%{opacity:0}97%,99%{opacity:1}}
 
 /* ================= FRONT-PAGE LEAD GRID =========================== */
 .lead{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:clamp(18px,2.4vw,34px);
@@ -360,7 +355,7 @@ body{
 }
 
 /* =====================================================================
-   NAVIGATION PORTALS — dramatic newspaper typography that IS the nav.
+   NAVIGATION PORTALS - dramatic newspaper typography that IS the nav.
    A paragraph introduces the idea; the portal celebrates it, elsewhere.
    ===================================================================== */
 .portal{-webkit-column-span:all;column-span:all;display:block;text-decoration:none;color:var(--ink);
@@ -369,7 +364,7 @@ body{
 
 .bigflow{position:relative;margin-top:clamp(8px,1.2vw,14px);
   border-top:1px solid var(--rule);padding-top:clamp(14px,1.9vw,22px)}
-/* the prose — a shorter, airier measure, like reading a newspaper */
+/* the prose - a shorter, airier measure, like reading a newspaper */
 .bigflow .ft{margin:0;font-family:var(--f-body);
   font-size:clamp(18px,2vw,23px);line-height:1.62;text-align:justify;text-align-last:justify;hyphens:auto;color:var(--ink)}
 /* an invisible float dropped to the paragraph's foot: only the last lines wrap around it,
@@ -381,8 +376,8 @@ body{
 .fp-portrait{float:left;width:clamp(148px,18vw,208px);margin:7px 24px 8px 0}
 
 /* the giant inline navigation words */
-/* editorial nav words — printed ink, not hyperlinks. On hover the ink
-   presses into the paper: no colour, no underline, no glow — a whisper of
+/* editorial nav words - printed ink, not hyperlinks. On hover the ink
+   presses into the paper: no colour, no underline, no glow - a whisper of
    spread + a finger-press dimple. Release eases back slower than the press. */
 .huge{font-family:var(--f-slab);font-weight:400;color:var(--ink);text-decoration:none;
   line-height:.82;letter-spacing:-.01em;white-space:nowrap;position:relative;
@@ -399,7 +394,7 @@ body{
   transition:transform .22s ease, text-shadow .22s ease}
 .huge:hover::before{opacity:1;transition:opacity .22s ease}
 .huge:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-/* letterpress texture on the big editorial type — only once JS confirms the filter */
+/* letterpress texture on the big editorial type - only once JS confirms the filter */
 .inked .nameplate h1,
 .inked .lead-head,
 .inked .huge,
@@ -410,7 +405,7 @@ body{
 }
 
 /* front page: image floats left, CONNECT floats right, prose wraps around
-   both and fills in beneath the portrait — one gap-free broadsheet block. */
+   both and fills in beneath the portrait - one gap-free broadsheet block. */
 .frontlead{border-top:3px double var(--rule);
   padding-top:clamp(14px,1.8vw,22px);margin-top:6px}
 .frontlead::after{content:"";display:block;clear:both}
@@ -421,12 +416,12 @@ body{
   font-size:clamp(38px,6.2vw,86px);line-height:1.18;letter-spacing:.02em;
   text-align:justify;text-align-last:justify;text-justify:inter-character;margin:.35em 0 .34em}
 .lead-head .mark{-webkit-text-stroke:.4px var(--paper)}
-/* marker-highlight — heading reversed out of ink blocks; box-shadow spread keeps
+/* marker-highlight - heading reversed out of ink blocks; box-shadow spread keeps
    the block around the text without shifting the heading's placement */
 .lead-head .mark{background:var(--ink);color:var(--paper);display:block;
   padding:.03em .14em .12em;
   -webkit-box-decoration-break:clone;box-decoration-break:clone}
-/* CONNECT — the closing portal, dropped to the bottom-right where the
+/* CONNECT - the closing portal, dropped to the bottom-right where the
    story ends, sized to match the inline nav words (experience/work/…) */
 .connect-portal{position:absolute;right:0;bottom:0;writing-mode:vertical-rl;text-orientation:mixed;
   font-family:var(--f-slab);text-decoration:none;transform-origin:60% 50%;
@@ -465,9 +460,9 @@ body{
 }
 
 /* =====================================================================
-   DENSE FRONT PAGE — one broadsheet sheet, taken in almost at a glance.
+   DENSE FRONT PAGE - one broadsheet sheet, taken in almost at a glance.
    Portrait, story, navigation-as-headlines, image, quote & note all
-   coexist in a tight grid — dense, not long.
+   coexist in a tight grid - dense, not long.
    ===================================================================== */
 /* ---- mobile: even 2×2 stats + unobtrusive ambient controls ---- */
 @media (max-width:760px){
@@ -501,11 +496,6 @@ body{
   stroke-linecap:round;stroke-linejoin:round}
 .obj svg .fill{fill:currentColor;stroke:none}
 .obj svg .g{fill:var(--gold);stroke:none}
-@keyframes flit{0%,100%{transform:translate(0,0) rotate(-4deg)}
-  25%{transform:translate(14px,-10px) rotate(3deg)}
-  50%{transform:translate(-8px,8px) rotate(-2deg)}
-  75%{transform:translate(10px,6px) rotate(4deg)}}
-@keyframes flap{from{transform:scaleY(1)}to{transform:scaleY(.55)}}
 
 /* running text down the paper margins (like "THE DARK LORD DEFEATED") */
 .siderail{position:absolute;top:0;bottom:0;width:26px;display:flex;align-items:center;
@@ -543,7 +533,7 @@ body{
   .dateline .cell.mid{order:-1;flex-basis:100%}
 }
 @media (max-width:600px){
-  /* justified columns river badly on phones — read left-aligned instead */
+  /* justified columns river badly on phones - read left-aligned instead */
   .article{text-align:left;hyphens:manual}
 }
 
@@ -561,13 +551,13 @@ body{
   text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:1px;text-underline-offset:2px}
 .owl-list li:hover .ll{color:var(--gold)}
 .seal{background:radial-gradient(circle at 38% 32%, #a23029, var(--seal-red) 60%, #5c1512 100%)}
-/* Oswald labels are condensed — a touch less tracking reads better */
+/* Oswald labels are condensed - a touch less tracking reads better */
 .kicker,.byline,.paper-nav a,.teaser .tk,.teaser .more,.owlbtn,.backlink,
 .dinkus,.obj-kicker,.ledger h4,.crosshead,.adbox .adtag,.classmini .ct,
 .weatherbox .wt,.crossword .ct,.colophon{letter-spacing:.12em}
 
 /* =====================================================================
-   LUMOS — dark-parchment mode, a wand light, a wand cursor
+   LUMOS - dark-parchment mode, a wand light, a wand cursor
    + hover-reveal annotations + page-turn transitions (built in prophet.js)
    ===================================================================== */
 body{transition:background-color .6s ease}
@@ -633,7 +623,7 @@ body.lumos #sound-toggle.on{border-color:var(--gold);box-shadow:0 0 12px rgba(22
 body.turning #turnfade{opacity:.52}
 
 /* the clicked headline: a quick press, then it grows into the focus, lifted
-   above the fading page (no colour change — it is still ink on paper) */
+   above the fading page (no colour change - it is still ink on paper) */
 .turn-press{position:relative;z-index:84;transform:scale(.965) !important;
   transition:transform .12s ease !important}
 .turn-grow{position:relative;z-index:84;transform:scale(1.12) !important;
@@ -642,7 +632,7 @@ body.turning #turnfade{opacity:.52}
 
 /* the newspaper leaf that folds over / peels away on its left spine.
    Parked invisible (opacity:0) and shown instantly while a turn is in flight,
-   so there is never a fade — only the fold. */
+   so there is never a fade - only the fold. */
 #pageturn{position:fixed;inset:0;z-index:92;pointer-events:none;opacity:0;
   transform-origin:0% 50%;transform:perspective(1800px) rotateY(-104deg);
   background:linear-gradient(100deg, rgba(0,0,0,.13), rgba(0,0,0,0) 15%), var(--paper-lit)}
@@ -656,7 +646,7 @@ body.turning #turnfade{opacity:.52}
 #pageturn::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(100deg, rgba(20,14,6,.20), rgba(20,14,6,0) 32%)}
 
-/* step 5 — the arrived page settles like paper coming to rest */
+/* step 5 - the arrived page settles like paper coming to rest */
 @keyframes paperSettle{0%{transform:translateY(-3px)}62%{transform:translateY(1px)}100%{transform:translateY(0)}}
 body.settling .sheet{animation:paperSettle .15s ease-out}
 @media (prefers-reduced-motion: reduce){ body.settling .sheet{animation:none} }
@@ -710,7 +700,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 }
 
 /* ===================================================================
-   ANONYMOUS TIP — an owl drops a sealed note onto the front page.
+   ANONYMOUS TIP - an owl drops a sealed note onto the front page.
    The envelope rests inside the article; click to unfold the letter.
    =================================================================== */
 .anon-note{position:absolute;top:42%;left:45%;z-index:40;
@@ -729,7 +719,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
   transform:rotate(var(--rot)) translateY(-3px);
   filter:drop-shadow(4px 11px 15px rgba(24,16,6,.44))}
 
-/* the envelope front pocket — warm, worn parchment */
+/* the envelope front pocket - warm, worn parchment */
 .anon-face{position:absolute;inset:0;z-index:2;border-radius:3px;
   background:linear-gradient(158deg,#efe5ca 0%,#e4d5b1 58%,#d7c599 100%);
   border:1px solid rgba(92,66,30,.42);
@@ -787,7 +777,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 .anon-hand{margin:0;text-align:center;color:#3a2a16;
   font-family:var(--f-hand),cursive;font-size:calc(var(--w) * .13);transform:rotate(-1.5deg)}
 
-/* OPEN — flap folds back, seal cracks, letter rises and flattens */
+/* OPEN - flap folds back, seal cracks, letter rises and flattens */
 .anon-note.open .anon-flap{transform:rotateX(172deg)}
 .anon-note.open .anon-seal i::before{opacity:1}
 .anon-note.open .anon-letter{transform:translate(-50%,-98%) rotateX(0);opacity:1;pointer-events:auto;z-index:6}
@@ -807,7 +797,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
   filter:drop-shadow(2px 10px 12px rgba(20,14,6,.26));
   animation:owlFly 5.2s cubic-bezier(.4,.06,.5,1) forwards}
 #anon-owl svg{display:block;width:100%;height:auto;overflow:visible}
-/* Hedwig — a cute snowy owl: amber eyes, charcoal wings, bearing the letter */
+/* Hedwig - a cute snowy owl: amber eyes, charcoal wings, bearing the letter */
 #anon-owl .ow-body{fill:#fbfbf9;stroke:#2c2824;stroke-width:2.4;stroke-linejoin:round}
 #anon-owl .ow-wingdark{fill:#3c424a;stroke:#23272c;stroke-width:2.4;stroke-linejoin:round}
 #anon-owl .ow-wingtex path{fill:none;stroke:#8b929a;stroke-width:2;stroke-linecap:round;opacity:.85}
@@ -845,7 +835,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
   font-size:clamp(25px,3.7vw,42px);line-height:.98;letter-spacing:.006em;margin:.06em 0 .1em;color:var(--ink)}
 
 /* ===================================================================
-   THE DesAIgn SQUARE — front-page composition
+   THE DesAIgn SQUARE - front-page composition
    Grid: [ THE + DESAIGN | photo ] up top, then SQUARE as a full-width
    banner filling the row beneath, then the tagline and full-width story.
    =================================================================== */
@@ -859,7 +849,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
   align-items:stretch;
   margin-top:clamp(4px,.8vw,10px)}
 
-/* THE / DESAIGN / SQUARE — stacked wood-type, each word on its own ruled line
+/* THE / DESAIGN / SQUARE - stacked wood-type, each word on its own ruled line
    (the Daily Prophet front-page treatment): big, tight to the photo, the
    hairline rules giving each word room so they never read as overlapping. */
 .ff-head{grid-area:head;align-self:start;margin:0;font-family:var(--f-display);
@@ -871,7 +861,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 .ff-out{font-size:clamp(52px,10.6vw,150px);
   -webkit-text-stroke:clamp(2px,.4vw,4.5px) var(--ink);color:transparent}
 
-/* the living photo — scaled up to fill the full height of the words beside it */
+/* the living photo - scaled up to fill the full height of the words beside it */
 .ff-photo{grid-area:photo;align-self:stretch;float:none;margin:0;width:100%}
 .ff-photo .frame{height:100%}
 .ff-photo .frame img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
@@ -903,7 +893,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 .eq-target .eq-tl{display:block;white-space:nowrap}
 .ff-eq .op{font-style:normal;font-family:var(--f-display);color:var(--gold);padding:0 .04em}
 .ff-eq .op.eq{color:var(--red)}
-/* the morph stays a hidden surprise — it reads as ordinary text and is found by
+/* the morph stays a hidden surprise - it reads as ordinary text and is found by
    hovering, tapping or focusing it. Only a quiet pointer cursor hints at a reward. */
 .ff-eq[data-eqmorph]{cursor:pointer}
 
@@ -937,7 +927,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 @media (max-width:640px){ .ff-story{columns:1} }
 
 /* =====================================================================
-   CONTACT — write a letter; on Send it folds and sinks into the envelope
+   CONTACT - write a letter; on Send it folds and sinks into the envelope
    as ONE continuous motion, the flap closes over it, the wax presses, and
    the stage settles to a sealed envelope with a handwritten note beneath.
    One choreography, one envelope. Degrades to a plain form without JS.
@@ -950,7 +940,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 
 /* the scene holds the letter (in flow, it sets the height while writing) with
    the fixed-size envelope anchored at its foot. On send the height collapses
-   smoothly to the envelope alone — so no gap is ever left above it. */
+   smoothly to the envelope alone - so no gap is ever left above it. */
 .env-scene{position:relative;overflow:hidden;transition:height .8s cubic-bezier(.5,.05,.25,1)}
 
 /* the envelope: a fixed, well-proportioned envelope, bottom-anchored */
@@ -1038,7 +1028,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 }
 @media (max-width:560px){ .post-stage{max-width:100%} }
 
-/* --- TODAY: the front-page lead — twin lead stories, side by side --- */
+/* --- TODAY: the front-page lead - twin lead stories, side by side --- */
 /* --- CURRENTLY: the present state, set apart from the timeline below --- */
 .today-block{max-width:940px;margin:clamp(16px,2.6vw,30px) auto 0}
 .today-label{display:flex;align-items:center;justify-content:center;gap:clamp(10px,2vw,18px);
@@ -1077,7 +1067,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 .clip.arrived{animation:clipArrive .6s ease}
 @keyframes clipArrive{0%,100%{transform:translateY(0)}45%{transform:translateY(-4px)}}
 
-/* the numbered ink stamp — this edition's place on the trail */
+/* the numbered ink stamp - this edition's place on the trail */
 .clip-no{position:absolute;top:6px;z-index:2;
   width:clamp(34px,4.6vw,46px);height:clamp(34px,4.6vw,46px);
   display:grid;place-items:center;border-radius:50%;
@@ -1102,14 +1092,14 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 .clip-story{font-family:var(--f-serif);font-size:clamp(15px,1.6vw,17px);line-height:1.58;color:var(--ink-2);text-align:justify;hyphens:auto;margin:0}
 .clip-story::after{content:"";display:block;clear:both}
 
-/* --- the wandering footprint trail — weaves the full width, side to side --- */
+/* --- the wandering footprint trail - weaves the full width, side to side --- */
 .trail{position:relative;height:clamp(96px,12vw,150px);width:100%;margin:0}
 .fp{position:absolute;width:clamp(17px,2.2vw,24px);height:auto;opacity:0;filter:blur(1.4px);
   transform-origin:50% 50%;transition:opacity .32s ease, filter .32s ease}
 .fp svg{display:block;width:100%;height:auto;fill:var(--ink);opacity:.64;transition:opacity .25s ease}
 .fp.on{opacity:1;filter:blur(0)}
 .fp:hover svg{opacity:.92}
-.fp.dark svg{opacity:1;fill:var(--gold)}   /* the last footprint, gilded — the journey has arrived at the present */
+.fp.dark svg{opacity:1;fill:var(--gold)}   /* the last footprint, gilded - the journey has arrived at the present */
 
 /* the closing line */
 .path-end{text-align:center;font-family:var(--f-serif);font-style:italic;color:var(--ink);
@@ -1133,7 +1123,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 }
 
 /* =====================================================================
-   THE PENSIEVE  ·  Work page — drag a clipping into the basin to relive it
+   THE PENSIEVE  ·  Work page - drag a clipping into the basin to relive it
    Inspiration only: the interaction and the feeling, never the movie scene.
    ===================================================================== */
 .pensieve-room{position:relative;min-height:clamp(1040px,120vh,1200px);
@@ -1168,7 +1158,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 @keyframes rippleOut{0%{transform:translate(-50%,-50%) scale(.15);opacity:.55}
   100%{transform:translate(-50%,-50%) scale(2.7);opacity:0}}
 
-/* the handwritten note beside the basin — the only hint, kept subtle */
+/* the handwritten note beside the basin - the only hint, kept subtle */
 .basin-note{position:absolute;left:50%;top:calc(50% + clamp(150px,18vw,205px));transform:translateX(-50%) rotate(-2deg);
   font-family:var(--f-hand);color:var(--ink-2);font-size:clamp(18px,2.4vw,25px);opacity:.8;white-space:nowrap;z-index:1;pointer-events:none}
 
@@ -1244,7 +1234,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 .return-archive:hover{color:var(--red)}
 
 @media (max-width:760px){
-  /* phone: the basin drag doesn't suit touch — drop it and present the
+  /* phone: the basin drag doesn't suit touch - drop it and present the
      clippings as a clean, tappable stack that opens the project directly */
   .pensieve-room{min-height:0;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,4.5vw,26px)}
   .basin,.basin-note{display:none}
@@ -1332,7 +1322,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
   .character{height:clamp(230px,64vw,300px);object-fit:cover;object-position:top center;
     -webkit-mask-image:linear-gradient(#000 84%,transparent);mask-image:linear-gradient(#000 84%,transparent)}
   .hat-rest{top:16%}
-  /* the chosen hat, rested on her head — sized to the head, on the crown */
+  /* the chosen hat, rested on her head - sized to the head, on the crown */
   .worn-hat{position:absolute;left:50%;top:14%;width:23%;transform:translate(-50%,-50%);
     z-index:6;opacity:0;pointer-events:none;transition:opacity .4s ease;
     filter:drop-shadow(2px 6px 6px rgba(24,16,6,.32))}
@@ -1382,7 +1372,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 .cup-hint{display:block;font-family:var(--f-hand);color:var(--ink-3);
   font-size:clamp(16px,2vw,21px);margin-top:8px;transition:opacity .5s ease}
 .cupstage.busy .cup-hint{opacity:0}
-/* a quiet progress marker, 01 / 04 … 04 / 04 — never competes with the cup or card */
+/* a quiet progress marker, 01 / 04 … 04 / 04 - never competes with the cup or card */
 .cup-progress{display:block;font-family:var(--f-label);text-transform:uppercase;letter-spacing:.28em;
   font-size:clamp(10px,1.2vw,12px);color:var(--ink-3);opacity:.7;margin-top:clamp(6px,1vw,10px);
   min-height:1em;transition:opacity .4s ease}
@@ -1428,7 +1418,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 .parch.final .parch-text{font-style:italic;font-size:clamp(18px,2.1vw,23px);line-height:1.62;color:var(--ink)}
 
 @media (max-width:640px){
-  /* phone: keep the whole cup visible — the scroll unrolls in normal flow
+  /* phone: keep the whole cup visible - the scroll unrolls in normal flow
      beneath it (cup, progress, then scroll) instead of rising over it */
   /* the cup stays put at the top; the scroll unrolls in flow beneath it, so
      tapping the cup never moves it and the whole trophy stays visible */
@@ -1458,7 +1448,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
   .l-field .l-area{min-height:96px}
 }
 
-/* the masthead crest is a link home — display:contents keeps the layout identical */
+/* the masthead crest is a link home - display:contents keeps the layout identical */
 .crest-link{display:contents}
 .obj.crest{cursor:pointer}
 
@@ -1503,7 +1493,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 }
 @media (prefers-reduced-motion:reduce){ .mp-scrap{display:none} }
 
-/* 404 · DOBBY — a page set free, with a single knitted sock and a folded note */
+/* 404 · DOBBY - a page set free, with a single knitted sock and a folded note */
 .misprint.notfound{min-height:84vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .dobby-stage{position:relative;display:flex;align-items:center;justify-content:center;
   min-height:clamp(150px,22vw,210px);margin:clamp(18px,2.8vw,32px) 0 clamp(20px,2.8vw,32px)}
@@ -1589,7 +1579,7 @@ select:focus-visible, [tabindex]:focus-visible,
 .cs-list li{font-family:var(--f-serif);font-size:clamp(15px,1.6vw,17px);line-height:1.55;color:var(--ink-2);
   padding:.55em 0 .55em 1.5em;position:relative}
 .cs-list li + li{border-top:1px solid rgba(38,32,22,.14)}
-.cs-list li::before{content:"—";position:absolute;left:0;top:.55em;color:var(--gold)}
+.cs-list li::before{content:"-";position:absolute;left:0;top:.55em;color:var(--gold)}
 .cs-impact .cs-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(12px,2vw,22px);margin-bottom:.9em}
 .cs-stat{border-top:3px double var(--rule);padding-top:12px;text-align:center}
 .cs-num{display:block;font-family:var(--f-display);font-size:clamp(30px,5vw,46px);color:var(--ink);line-height:1;letter-spacing:.01em}
