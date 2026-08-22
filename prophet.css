@@ -36,8 +36,8 @@
   --gold:       #c0983a;   /* ornament: crest, stars, dividers, separators */
   --red:        #7c1f1a;   /* signal: the AI, wax seal, primary CTA */
 
-  --measure: 1180px;         /* broadsheet width */
-  --cvw:     min(1vw, 12.8px); /* a vw unit that stops growing once content hits max-width, so type never over-scales on wide monitors */
+  --measure: 1040px;         /* the page's fixed content width; it never grows past this */
+  --cvw:     min(1vw, 11.3px); /* a vw unit that stops growing once content hits max-width, so type never over-scales on wide monitors */
 
   /* - Type - */
   --f-display:  "Anton", "Oswald", sans-serif;
