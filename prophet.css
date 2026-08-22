@@ -405,8 +405,8 @@ body{
   .huge:hover::before,.connect-portal:hover::before{opacity:0}
 }
 
-/* front page: image floats left, CONNECT floats right, prose wraps around
-   both and fills in beneath the portrait - one gap-free broadsheet block. */
+/* front page: image floats left, prose wraps around it and fills in beneath
+   the portrait, and CONNECT ends the sentence inline - one broadsheet block. */
 .frontlead{border-top:3px double var(--rule);
   padding-top:clamp(14px,1.8vw,22px);margin-top:6px}
 .frontlead::after{content:"";display:block;clear:both}
@@ -422,9 +422,10 @@ body{
 .lead-head .mark{background:var(--ink);color:var(--paper);display:block;
   padding:.03em .14em .12em;
   -webkit-box-decoration-break:clone;box-decoration-break:clone}
-/* CONNECT - the closing portal, dropped to the bottom-right where the
-   story ends, sized to match the inline nav words (experience/work/…) */
-.connect-portal{position:absolute;right:0;bottom:0;writing-mode:vertical-rl;text-orientation:mixed;
+/* CONNECT - the closing portal, flowing inline as the final emphasis word
+   right after "…we should probably", sized to match the other inline
+   nav words (experience/work/…) so the sentence reads in one breath */
+.connect-portal{position:relative;display:inline-block;writing-mode:horizontal-tb;vertical-align:baseline;
   font-family:var(--f-slab);text-decoration:none;transform-origin:60% 50%;
   color:var(--ink);line-height:.82;letter-spacing:-.01em;
   font-size:clamp(1.65em,calc(3.9 * var(--cvw)),2.85em);
@@ -448,11 +449,6 @@ body{
   .frontlead .lead-head{order:3;margin:.1em 0 .3em}
   .frontlead .bigflow{order:4}
   .bigflow .ft{padding-right:0}
-  /* connect flows inline, right after "…we should probably", matching the
-     other emphasis words rather than sitting as a centred block */
-  .connect-portal{position:static;display:inline-block;float:none;writing-mode:horizontal-tb;
-    vertical-align:baseline;text-align:left;align-self:auto;
-    font-size:clamp(1.65em,calc(3.9 * var(--cvw)),2.85em);margin:0}
 }
 
 @media (max-width:700px){
