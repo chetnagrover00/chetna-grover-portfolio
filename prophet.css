@@ -497,15 +497,6 @@ body{
 .obj svg .fill{fill:currentColor;stroke:none}
 .obj svg .g{fill:var(--gold);stroke:none}
 
-/* running text down the paper margins (like "THE DARK LORD DEFEATED") */
-.siderail{position:absolute;top:0;bottom:0;width:26px;display:flex;align-items:center;
-  justify-content:center;overflow:hidden;color:var(--ink-faint);z-index:1;pointer-events:none}
-.siderail.left{left:6px}
-.siderail.right{right:6px}
-.siderail span{writing-mode:vertical-rl;font-family:var(--f-sc);letter-spacing:.34em;
-  text-transform:uppercase;font-size:11px;white-space:nowrap;opacity:.6}
-.siderail.left span{transform:rotate(180deg)}
-
 /* ================= "CONTINUED / TURN OVER" DEVICES =============== */
 .contbox{border:2px solid var(--rule);text-align:center;padding:12px 14px;
   font-family:var(--f-disp);font-weight:900;line-height:1.05;font-size:clamp(17px,2vw,22px);
@@ -515,7 +506,6 @@ body{
   text-transform:uppercase;font-size:11px;color:var(--ink-faint);margin-bottom:5px}
 
 /* ================= RESPONSIVE ===================================== */
-@media (max-width:1180px){ .siderail{display:none} }
 @media (max-width:900px){
   .wellcol{padding:16px 0 4px}
 }
