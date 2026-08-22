@@ -405,8 +405,8 @@ body{
   .huge:hover::before,.connect-portal:hover::before{opacity:0}
 }
 
-/* front page: image floats left, prose wraps around it and fills in beneath
-   the portrait, and CONNECT ends the sentence inline - one broadsheet block. */
+/* front page: image floats left, CONNECT floats right into the bottom
+   corner, prose wraps around both - one gap-free broadsheet block. */
 .frontlead{border-top:3px double var(--rule);
   padding-top:clamp(14px,1.8vw,22px);margin-top:6px}
 .frontlead::after{content:"";display:block;clear:both}
@@ -422,10 +422,10 @@ body{
 .lead-head .mark{background:var(--ink);color:var(--paper);display:block;
   padding:.03em .14em .12em;
   -webkit-box-decoration-break:clone;box-decoration-break:clone}
-/* CONNECT - the closing portal, flowing inline as the final emphasis word
-   right after "…we should probably", sized to match the other inline
-   nav words (experience/work/…) so the sentence reads in one breath */
-.connect-portal{position:relative;display:inline-block;writing-mode:horizontal-tb;vertical-align:baseline;
+/* CONNECT - the closing portal: vertical, in the bottom-right corner.
+   A hidden shim float (JS) carves a pocket so the last lines wrap around it
+   and the reader flows from "…we should probably" straight into "connect". */
+.connect-portal{position:absolute;right:0;bottom:0;writing-mode:vertical-rl;text-orientation:mixed;
   font-family:var(--f-slab);text-decoration:none;transform-origin:60% 50%;
   color:var(--ink);line-height:.82;letter-spacing:-.01em;
   font-size:clamp(1.65em,calc(3.9 * var(--cvw)),2.85em);
@@ -441,6 +441,9 @@ body{
   transition:transform .22s ease, text-shadow .22s ease}
 .connect-portal:hover::before{opacity:1;transition:opacity .22s ease}
 .frontlead .bigflow{border-top:0;padding-top:0;margin-top:clamp(6px,1vw,12px)}
+/* the closing line hugs the right, ending flush against the vertical CONNECT
+   so "…we should probably" reads straight into it (desktop pocket layout only) */
+@media (min-width:761px){ .frontlead .bigflow .ft{text-align-last:right} }
 .clearall{clear:both}
 @media (max-width:760px){
   .frontlead{display:flex;flex-direction:column;padding-top:clamp(10px,3vw,16px)}
@@ -449,6 +452,11 @@ body{
   .frontlead .lead-head{order:3;margin:.1em 0 .3em}
   .frontlead .bigflow{order:4}
   .bigflow .ft{padding-right:0}
+  /* on phones the vertical portal reads awkwardly, so connect flows inline
+     as the final emphasis word right after "…we should probably" */
+  .connect-portal{float:none;position:static;display:inline-block;writing-mode:horizontal-tb;
+    vertical-align:baseline;margin:0;
+    font-size:clamp(1.65em,calc(3.9 * var(--cvw)),2.85em)}
 }
 
 @media (max-width:700px){
