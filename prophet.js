@@ -117,14 +117,6 @@
       wandOn:  function () { tone(720, .28, .016, "sine", true, 1440);
                              setTimeout(function () { tone(2100, .16, .008, "sine", false); }, 150); },         // wand flick
       magFade: function () { chord([880, 660], .6, .012, "sine"); },                                            // gentle magical fade
-      motif:   function () {                                         // an ORIGINAL music-box arrival phrase (home) - our own melody, not any existing tune
-        if (!on || !ensure()) return; hush();
-        var seq = [[784,0,.8,.013],[1046.5,320,.8,.012],[987.77,640,.75,.011],[784,980,.75,.011],
-                   [880,1320,.85,.011],[659.25,1740,.95,.010],[784,2160,1.15,.011],[1318.51,2520,.9,.007]];
-        for (var i = 0; i < seq.length; i++) (function (n) {
-          setTimeout(function () { tone(n[0], n[2], n[3], "triangle", false); }, n[1]);   // notes ring together like a celesta
-        })(seq[i]);
-      },
       /* legacy aliases so existing call-sites map onto organic cues */
       shift:   function () { grain({ dur: rnd(.1,.16), freq: rnd(1800,2400), q: .6, gain: .006 }); },
       settle:  function () { grain({ dur: rnd(.35,.55), freq: rnd(700,1000), q: .4, gain: .01, type: "lowpass" }); },
@@ -1382,30 +1374,6 @@
       if (reduce) {                                       // reduced motion: the page-turn handler is off, so navigate here
         a.addEventListener("click", function (e) { e.preventDefault(); try { Paper.play("page"); } catch (x) {} goReturn(); });
       }
-    });
-  })();
-
-  /* ================================================================
-     HOME ARRIVAL  ·  an original music-box phrase the first time you
-     touch the home page. Browsers block audio until a gesture, so it
-     waits for the first interaction, plays once, and only if sound is
-     on. Not Hedwig's Theme - our own melody.
-     ================================================================ */
-  (function () {
-    if (!document.querySelector(".frontlead")) return;            // home only
-    var played = false;
-    function greet() {
-      if (played) return; played = true;
-      off();
-      if (Paper.on()) { try { Paper.play("motif"); } catch (e) {} }
-    }
-    function off() {
-      ["pointerdown", "keydown", "wheel", "touchstart"].forEach(function (ev) {
-        window.removeEventListener(ev, greet);
-      });
-    }
-    ["pointerdown", "keydown", "wheel", "touchstart"].forEach(function (ev) {
-      window.addEventListener(ev, greet, { passive: true, once: false });
     });
   })();
 })();
