@@ -321,6 +321,19 @@
     });
   }
 
+  /* ---- back/forward cache: a page we left mid-fold is restored with the
+     newspaper still folded flat over it (blank). The arrive animation does
+     not re-run on a bfcache restore, so reset the leaf and lift the cover
+     here, or RETURN appears to land on an empty page. ---- */
+  window.addEventListener("pageshow", function (e) {
+    if (!e.persisted) return;                               // only bfcache restores need fixing
+    document.body.classList.remove("turning", "settling");
+    if (pt) { pt.style.transition = "none"; pt.classList.remove("down"); pt.style.transform = FOLD_AWAY; }
+    [].forEach.call(document.querySelectorAll(".turn-press, .turn-grow"), function (el) {
+      el.classList.remove("turn-press", "turn-grow");
+    });
+  });
+
   /* ---- scroll reveal: stories & pictures set into the page as you read ---- */
   if (!reduce && "IntersectionObserver" in window) {
     var sel = [
