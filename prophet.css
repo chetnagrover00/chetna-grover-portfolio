@@ -36,7 +36,9 @@
   --gold:       #c0983a;   /* ornament: crest, stars, dividers, separators */
   --red:        #7c1f1a;   /* signal: the AI, wax seal, primary CTA */
 
-  --measure: 1040px;         /* the page's fixed content width; it never grows past this */
+  --measure: 1070px;         /* the page's fixed content width; it never grows past this. nudged
+                                +30px from 1040 so the home closing line fills enough to justify
+                                cleanly, while the hero heading keeps its original two-line wrap */
   --cvw:     min(1vw, 11.3px); /* a vw unit that stops growing once content hits max-width, so type never over-scales on wide monitors */
 
   /* - Type - */
@@ -441,11 +443,12 @@ body{
   transition:transform .22s ease, text-shadow .22s ease}
 .connect-portal:hover::before{opacity:1;transition:opacity .22s ease}
 .frontlead .bigflow{border-top:0;padding-top:0;margin-top:clamp(6px,1vw,12px)}
-/* the closing line reads straight into the vertical CONNECT. At this width the
-   tail wraps to a short final row that justify cannot fill without stretching a
-   few words across the whole measure, so we right-align it instead - the last
-   word lands flush against CONNECT with natural spacing, no yawning gaps. */
-@media (min-width:761px){ .frontlead .bigflow .ft{text-align-last:right} }
+/* at the capped width the whole paragraph justifies, last line included, so it
+   reads as one even block ending flush at the vertical CONNECT. On narrower
+   windows the sheet shrinks below the cap and the final row can drop to a lone
+   word that justify would stretch across the measure, so there we right-align
+   it instead - the last word still lands flush against CONNECT, no yawning gaps. */
+@media (min-width:761px) and (max-width:1269px){ .frontlead .bigflow .ft{text-align-last:right} }
 .clearall{clear:both}
 @media (max-width:760px){
   .frontlead{display:flex;flex-direction:column;padding-top:clamp(10px,3vw,16px)}
