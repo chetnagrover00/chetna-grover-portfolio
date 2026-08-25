@@ -1204,13 +1204,13 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
 /* =====================================================================
    A MEMORY  ·  the reusable project page (another edition of the paper)
    ===================================================================== */
-.memory{max-width:900px;margin:0 auto}
+.memory{max-width:900px;margin:clamp(22px,3.2vw,40px) auto 0}   /* clear the thick rule above, so the framed cover never touches it */
 .memory-lead{font-family:var(--f-serif);font-style:italic;text-align:left;color:var(--ink);
   font-size:clamp(18px,calc(2.2 * var(--cvw)),24px);line-height:1.5;margin:0 0 clamp(16px,2.4vw,28px)}
 .memory-photo{margin:0 0 clamp(18px,2.6vw,30px);font-size:clamp(20px,calc(3 * var(--cvw)),34px);line-height:0;
   box-shadow:0 0 0 6px var(--paper-lit),0 0 0 7px var(--rule),0 8px 22px rgba(24,16,6,.2)}
 .memory-body{columns:2;column-gap:clamp(22px,3vw,38px)}
-.memory-body p{font-family:var(--f-serif);font-size:clamp(15px,calc(1.65 * var(--cvw)),17px);line-height:1.62;
+.memory-body p{font-family:var(--f-serif);font-size:clamp(16px,calc(1.85 * var(--cvw)),20px);line-height:1.62;
   color:var(--ink-2);margin:0 0 1em;text-align:justify;hyphens:auto;break-inside:avoid}
 .memory-body p:first-child::first-letter{font-family:var(--f-display);float:left;
   font-size:3.1em;line-height:.68;padding:.05em .12em 0 0;color:var(--ink)}
@@ -1219,7 +1219,7 @@ body.settling .sheet{animation:paperSettle .15s ease-out}
   padding:14px 0;margin:clamp(20px,2.8vw,32px) 0 0}
 .memory-meta div{text-align:center}
 .memory-meta dt{font-family:var(--f-label);text-transform:uppercase;letter-spacing:.12em;font-size:10px;color:var(--red)}
-.memory-meta dd{font-family:var(--f-serif);font-size:15px;color:var(--ink);margin:.25em 0 0}
+.memory-meta dd{font-family:var(--f-serif);font-size:16px;color:var(--ink);margin:.25em 0 0}
 /* a clear call to see the full project elsewhere */
 .memory-cta{text-align:center;margin:clamp(22px,3.2vw,36px) 0 0}
 .project-link{display:inline-flex;align-items:center;gap:10px;text-decoration:none;
@@ -1574,9 +1574,9 @@ select:focus-visible, [tabindex]:focus-visible,
 .cs-head{font-family:var(--f-label);text-transform:uppercase;letter-spacing:.14em;
   font-size:clamp(12px,calc(1.4 * var(--cvw)),14px);color:var(--red);margin:0 0 .7em;
   padding-bottom:.45em;border-bottom:1px solid var(--rule)}
-.cs-text{font-family:var(--f-serif);font-size:clamp(15px,calc(1.6 * var(--cvw)),18px);line-height:1.6;color:var(--ink-2);margin:0}
+.cs-text{font-family:var(--f-serif);font-size:clamp(16px,calc(1.85 * var(--cvw)),20px);line-height:1.62;color:var(--ink-2);margin:0}
 .cs-list{list-style:none;margin:0;padding:0}
-.cs-list li{font-family:var(--f-serif);font-size:clamp(15px,calc(1.6 * var(--cvw)),17px);line-height:1.55;color:var(--ink-2);
+.cs-list li{font-family:var(--f-serif);font-size:clamp(16px,calc(1.75 * var(--cvw)),19px);line-height:1.6;color:var(--ink-2);
   padding:.55em 0 .55em 1.5em;position:relative}
 .cs-list li + li{border-top:1px solid rgba(38,32,22,.14)}
 .cs-list li::before{content:"-";position:absolute;left:0;top:.55em;color:var(--gold)}
