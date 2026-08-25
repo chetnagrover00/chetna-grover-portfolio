@@ -36,7 +36,8 @@
   --gold:       #c0983a;   /* ornament: crest, stars, dividers, separators */
   --red:        #7c1f1a;   /* signal: the AI, wax seal, primary CTA */
 
-  --measure: 1040px;         /* the page's fixed content width; it never grows past this */
+  --measure: 1240px;         /* the page's fixed content width; it never grows past this. tuned so the
+                                home closing line fills as a full justified row ending flush at "connect" */
   --cvw:     min(1vw, 11.3px); /* a vw unit that stops growing once content hits max-width, so type never over-scales on wide monitors */
 
   /* - Type - */
@@ -441,9 +442,12 @@ body{
   transition:transform .22s ease, text-shadow .22s ease}
 .connect-portal:hover::before{opacity:1;transition:opacity .22s ease}
 .frontlead .bigflow{border-top:0;padding-top:0;margin-top:clamp(6px,1vw,12px)}
-/* the closing line hugs the right, ending flush against the vertical CONNECT
-   so "…we should probably" reads straight into it (desktop pocket layout only) */
-@media (min-width:761px){ .frontlead .bigflow .ft{text-align-last:right} }
+/* the closing line reads straight into the vertical CONNECT. At the capped
+   width the last row fills as a full justified line ending flush at the word
+   (text-align-last:justify, inherited). On narrower windows the sheet shrinks
+   and the tail can drop to a lone "probably" that justify cannot stretch, so
+   there we right-align it instead - it still lands flush against CONNECT. */
+@media (min-width:761px) and (max-width:1160px){ .frontlead .bigflow .ft{text-align-last:right} }
 .clearall{clear:both}
 @media (max-width:760px){
   .frontlead{display:flex;flex-direction:column;padding-top:clamp(10px,3vw,16px)}
